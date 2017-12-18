@@ -1,7 +1,7 @@
 const Logger = require('./logger');
 const fs = require("fs");
 
-class ConsoleLogger extends Logger
+class FileLogger extends Logger
 {
     constructor(file = 'log.log', prefix, defaultLevel, dateFormat)
     {
@@ -13,7 +13,7 @@ class ConsoleLogger extends Logger
 
     async log(message, level)
     {
-        return this.file.write(this.format(message, level) + '\n');
+        return await this.file.write(this.format(message, level) + '\n');
     }
 
     close()
@@ -21,3 +21,7 @@ class ConsoleLogger extends Logger
         this.file.close()
     }
 }
+
+module.exports = FileLogger;
+
+console.log(new FileLogger().log('heh'));
