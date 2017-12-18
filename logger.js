@@ -2,11 +2,11 @@ const moment = require('moment');
 
 class Logger
 {
-    constructor(prefix, defaultLevel, dateFormat)
+    constructor(prefix = 'without-prefix', defaultLevel = 'INFO', dateFormat = "YYYY-MM-DD")
     {
-        this.prefix = prefix ? prefix : 'without-prefix';
-        this.defaultLevel = defaultLevel ? defaultLevel : 'INFO';
-        this.dateFormat = dateFormat ? dateFormat : "YYYY-MM-DD";
+        this.prefix = prefix;
+        this.defaultLevel = defaultLevel;
+        this.dateFormat = dateFormat;
     }
 
     format(message, level)
